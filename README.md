@@ -1,6 +1,12 @@
-# **Etapes pour chaque projet**
+# BOILERPLATE JS Dyma
+
+Le repo est la base du cours JS sur dyma.fr
+
+Créer uniquement dans le but de repartir sur une base saine à chaque chapitre
 
 
+
+## **Etapes pour chaque projet**
 
 ### Initialiser NPM
 
