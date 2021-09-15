@@ -1,0 +1,1 @@
+{"version":3,"file":"main.bundle.js","mappings":";;;;;AAAA,IAAMA,OAAO,GAAG,SAAhB;AAEAC,OAAO,CAACC,GAAR,CAAYF,OAAZ,E","sources":["webpack://base/./src/index.js"],"sourcesContent":["const message = \"Bonjour\";\n\nconsole.log(message);\n"],"names":["message","console","log"],"sourceRoot":""}
