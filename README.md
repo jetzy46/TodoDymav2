@@ -4,8 +4,6 @@ Le repo est la base du cours JS sur dyma.fr
 
 Créer uniquement dans le but de repartir sur une base saine à chaque chapitre
 
-
-
 ## **Etapes pour chaque projet**
 
 ### Initialiser NPM
@@ -14,7 +12,7 @@ Créer uniquement dans le but de repartir sur une base saine à chaque chapitre
 npm init -y
 ```
 
-créer un fichier *package.json*. Penser à changer le nom du projet !
+Créer un fichier _package.json_. Penser à changer le nom du projet !
 
 ### Créer plusieurs fichiers à la racine du projet
 
@@ -29,10 +27,10 @@ script.js
 ### Installer les packages de Babel
 
 ```terminal
-npm i @babel/core @babel/cli @babel/preset-env 
+npm i @babel/core @babel/cli @babel/preset-env
 ```
 
-### Editer le fichier *babel.config.js*
+### Editer le fichier _babel.config.js_
 
 ```js
 module.exports = {
@@ -40,15 +38,15 @@ module.exports = {
 };
 ```
 
-### Créer un dossier *src*
+### Créer un dossier _src_
 
-Créer un dossier *src* à la racine du projet. Il contiendra tout les fichiers JS avant transformation (par Babel ou Webpack)
+Créer un dossier _src_ à la racine du projet. Il contiendra tout les fichiers JS avant transformation (par Babel ou Webpack)
 
-### Créer un dossier *dist*
+### Créer un dossier _dist_
 
-Créer un dossier *dist* à la racine du projet. Il contiendra tout les fichiers JS après transformation (par Babel ou Webpack)
+Créer un dossier _dist_ à la racine du projet. Il contiendra tout les fichiers JS après transformation (par Babel ou Webpack)
 
-Il ne faut surtout pas éditer le code qui si trouve ! Tout changement dans le JS doit se faire dans le dossier *src* !
+Il ne faut surtout pas éditer le code qui si trouve ! Tout changement dans le JS doit se faire dans le dossier _src_ !
 
 ### Installer Webpack
 
@@ -56,9 +54,9 @@ Il ne faut surtout pas éditer le code qui si trouve ! Tout changement dans le J
 npm i webpack webpack-cli webpack-dev-server
 ```
 
-### Créer un fichier *webpack.config.js*
+### Créer un fichier _webpack.config.js_
 
-Créer un fichier *webpack.config.js* à la racine du projet. il contiendra toute la configuration nécessaire au fonctionnement de Webpack
+Créer un fichier _webpack.config.js_ à la racine du projet. il contiendra toute la configuration nécessaire au fonctionnement de Webpack
 
 ```javascript
 const path = require("path");
@@ -96,17 +94,17 @@ module.exports = {
 };
 ```
 
-### Installer le plugin *HtmlWebpackPlugin*
+### Installer le plugin _HtmlWebpackPlugin_
 
 ```terminal
 npm i html-webpack-plugin
 ```
 
-### Intergrer le JS dans le HTML
+### Intégrer le JS dans le HTML
 
-Il n'y a pas besoin de mettre de balise script dans le fichier HTML. Le plugin *HtmlWebpackPlugin* s'occupe d'intégrer le futur bundle JS dans le fichir html
+Il n'y a pas besoin de mettre de balise script dans le fichier HTML. Le plugin _HtmlWebpackPlugin_ s'occupe d'intégrer le futur bundle JS dans le fichir html
 
-### Installer le plugin *Babel-loader*
+### Installer le plugin _Babel-loader_
 
 ```terminal
 npm i babel-loader
@@ -114,7 +112,7 @@ npm i babel-loader
 
 ### Ajouter 2 nouveaux scripts
 
-Dans le fichier *package.json*, ajouter 2 nouveaux script:
+Dans le fichier _package.json_, ajouter 2 nouveaux script:
 
 ```javascript
 "webpack": "webpack",
@@ -131,12 +129,12 @@ npm run webpack
 npm start
 ```
 
-Le script *webpack* sert a compiler les fichiers se trouvant dans le dossier *src*, et ainsi créer les éléments du dossier *dist*
+Le script _webpack_ sert a compiler les fichiers se trouvant dans le dossier _src_, et ainsi créer les éléments du dossier _dist_
 
-Le script *start* permet de lancer un serveur local, à l'adresse: 
+Le script _start_ permet de lancer un serveur local, à l'adresse:
 
 ```
 http://localhost:4000/
 ```
 
-Cette adresse peut être changé dans le fichier *webpack.config.js* 
+Cette adresse peut être changé dans le fichier _webpack.config.js_
