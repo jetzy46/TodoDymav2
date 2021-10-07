@@ -1,3 +1,1 @@
-const message = "Bonjour !";
-
-console.log(message);
+import "./style.css";

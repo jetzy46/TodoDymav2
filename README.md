@@ -138,3 +138,34 @@ http://localhost:4000/
 ```
 
 Cette adresse peut être changé dans le fichier _webpack.config.js_
+
+## Gestion du CSS
+
+Pour commencer, il faut ajouter 2 nouveaux plugin : *css-loader* et *style-loader*
+
+```terminal
+npm i css-loader style-loader
+```
+
+Dans le fichier *webpack.config.js*, on ajouter une nouvelle *rule*
+
+```javascript
+{
+    test: /\.css$/i,
+    use: ["style-loader", "css-loader"]
+},
+```
+
+Le *$* est utilisé pour dire que ça doit terminer par *.css* . Le *i* lui sert à dire que la casse est peu important ( le fichier peut être *.Css*, *.CSS* il le prendra en comtpe pareil)
+
+On peut maintenant ajouter un fichier *style.css* dans le dossier *src*. Mais l'import ne se fait plus dans le fichier *index.html*, mais dans le fichier *index.js*. 
+
+Tout en haut du fichier, il faut ajouter un import:
+
+```javascript
+import "./style.css"
+```
+
+Le CSS se mettra à jour à chaque sauvegarde, comme le JS. 
+
+Pour le HTML, il faudra refaire un *build* à chaque fois

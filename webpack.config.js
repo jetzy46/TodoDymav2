@@ -12,9 +12,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -23,11 +25,13 @@ module.exports = {
       template: path.resolve(__dirname, "src/index.html"),
     }),
   ],
+  stats: "minimal",
   devtool: "source-map",
   mode: "development",
   devServer: {
     static: path.resolve(__dirname, "./dist"),
     open: true,
     port: 4000,
+    hot: false,
   },
 };

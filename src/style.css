@@ -1,0 +1,36 @@
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;
+}
+
+.mainContainer {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mainTitle {
+  margin: 1vh 0;
+  padding: 0;
+  font-size: 5em;
+  color: white;
+  text-transform: uppercase;
+}
+
+.subTitle {
+  margin: 1vh 0;
+  padding: 0;
+  font-size: 4em;
+  color: white;
+  text-transform: capitalize;
+}
