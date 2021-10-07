@@ -141,13 +141,13 @@ Cette adresse peut être changé dans le fichier _webpack.config.js_
 
 ## Gestion du CSS
 
-Pour commencer, il faut ajouter 2 nouveaux plugin : *css-loader* et *style-loader*
+Pour commencer, il faut ajouter 2 nouveaux plugin : _css-loader_ et _style-loader_
 
 ```terminal
 npm i css-loader style-loader
 ```
 
-Dans le fichier *webpack.config.js*, on ajouter une nouvelle *rule*
+Dans le fichier _webpack.config.js_, on ajouter une nouvelle _rule_
 
 ```javascript
 {
@@ -156,16 +156,16 @@ Dans le fichier *webpack.config.js*, on ajouter une nouvelle *rule*
 },
 ```
 
-Le *$* est utilisé pour dire que ça doit terminer par *.css* . Le *i* lui sert à dire que la casse est peu important ( le fichier peut être *.Css*, *.CSS* il le prendra en comtpe pareil)
+Le _$_ est utilisé pour dire que ça doit terminer par _.css_ . Le _i_ lui sert à dire que la casse est peu important ( le fichier peut être _.Css_, _.CSS_ il le prendra en compte pareil)
 
-On peut maintenant ajouter un fichier *style.css* dans le dossier *src*. Mais l'import ne se fait plus dans le fichier *index.html*, mais dans le fichier *index.js*. 
+On peut maintenant ajouter un fichier _style.css_ dans le dossier _src_. Mais l'import ne se fait plus dans le fichier _index.html_, mais dans le fichier _index.js_.
 
 Tout en haut du fichier, il faut ajouter un import:
 
 ```javascript
-import "./style.css"
+import "./style.css";
 ```
 
-Le CSS se mettra à jour à chaque sauvegarde, comme le JS. 
+Le CSS se mettra à jour à chaque sauvegarde, comme le JS.
 
-Pour le HTML, il faudra refaire un *build* à chaque fois
+Pour le HTML, il faudra refaire un _build_ à chaque fois
