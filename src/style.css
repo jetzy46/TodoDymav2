@@ -2,35 +2,124 @@ html {
   font-family: sans-serif;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #1a1a1a;
+* {
+  box-sizing: border-box;
 }
 
-.mainContainer {
+body {
   margin: 0;
   padding: 0;
   width: 100vw;
   height: 100vh;
+  background-color: #1a1a1a;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.mainTitle {
-  margin: 1vh 0;
+.mainContainer {
+  margin: 0;
   padding: 0;
-  font-size: 5em;
-  color: white;
-  text-transform: uppercase;
+  width: 50%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.subTitle {
-  margin: 1vh 0;
+.mainContainer h1 {
+  color: white;
+  font-size: 3em;
+}
+
+.formToDo {
+  width: 80%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.input {
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.listToDo {
+  width: 80%;
+  margin: 0;
   padding: 0;
-  font-size: 4em;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.singleToDo {
+  width: 80%;
+  margin: 2px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  list-style-type: none;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.singleToDo:last-child {
+  border: none;
+}
+
+.singleToDo p {
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  margin-left: 10px;
   color: white;
   text-transform: capitalize;
+}
+
+.todo {
+  background: lightgray;
+  flex: 0 0 15px;
+  height: 15px;
+  border-radius: 15px;
+}
+
+.done {
+  background: #78e08f !important;
+}
+
+.btnToDo {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.addBtn {
+  background: #78e08f;
+  margin-left: 1em;
+}
+
+.editBtn {
+  background: #fa983a;
+}
+
+.delBtn {
+  background: #eb2f06;
 }
