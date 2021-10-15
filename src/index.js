@@ -106,18 +106,39 @@ fetch("https://jsonplaceholder.typicode.com/todos")
           });
         displayTodo();
       } else {
-        alert("On ne touche à R");
+        alert("Suppression annulée");
       }
     };
 
     // Editer une Todo
-    const editTodo = (i, todo) => {
+    const editTodo = async (i, todo) => {
+      console.log("before : ", todos[i]);
       const title = todo.title;
       //   on affiche un prompt avec la valeur à changer
       const newtitle = window.prompt("Une modification à éffectuer ?", title);
       //   on remplace la valeur title initiale par la nouvelle valeur
       todos[i].title = newtitle;
-      console.log(todos[i]);
+      todos[i].completed = false;
+      console.log("after : ", todos[i]);
+      await fetch("https://jsonplaceholder.typicode.com/todos" + "/" + i, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(todos[i]),
+      })
+        .then((resp) => {
+          console.log("response :", resp);
+          console.log(
+            resp.ok === true
+              ? "Modification éffectuée !"
+              : "Erreur lors de l'envoi"
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
       displayTodo();
     };
 
