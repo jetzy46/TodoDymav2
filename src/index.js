@@ -10,6 +10,7 @@ fetch("https://jsonplaceholder.typicode.com/todos")
     // diviser le tableau en 10
     const length = grabbedTodos.length;
     const todos = grabbedTodos.slice(0, length / 10);
+
     // affichage des todos
     const displayTodo = () => {
       // on créer une node pour chaque todo
@@ -22,40 +23,25 @@ fetch("https://jsonplaceholder.typicode.com/todos")
 
     // on créer l'élément todo, avec ces balises HTML et on y inclus les éléments
     const createTodoElement = (todo, i) => {
-      // on créer l'élément li qui va être la base de chaque todo
       const li = document.createElement("li");
-
-      // on créer l'élément span qui servira pour le dot de complétion
       const dot = document.createElement("span");
       dot.classList.add("todo");
       todo.completed ? dot.classList.add("done") : null;
-
-      // on créer l'élément qui contiendra le title de la todo
       const para = document.createElement("p");
       para.innerText = todo.title;
-
-      // on creer les boutons de chaque todo
       const editButton = document.createElement("button");
       const deleteButton = document.createElement("button");
       editButton.innerHTML = "Editer";
       deleteButton.innerHTML = "Supprimer";
 
-      // on ajouter l'event listener du bouton supprimer
       deleteButton.addEventListener("click", (e) => {
-        // on ajoute cette fonction pour eviter un bug lors de la suppression
-        // la todo suivante de la supprimé change de status
-        // l'event click se propage, il faut donc le stopper
-        e.stopPropagation();
         deleteTodo(i);
       });
 
-      // on ajouter l'event listener du bouton edit
       editButton.addEventListener("click", (e) => {
-        e.stopPropagation();
         editTodo(i, todo);
       });
 
-      // on creer le container des boutons
       const btnContainer = document.createElement("div");
 
       dot.addEventListener("click", (e) => {
@@ -63,12 +49,9 @@ fetch("https://jsonplaceholder.typicode.com/todos")
       });
 
       li.append(dot, para);
-      // on ajoute le container des boutons, ainsi que les boutons
       li.appendChild(btnContainer);
       btnContainer.append(editButton, deleteButton);
 
-      // le completed sert à changer la couleur du dot si la todo est faite
-      //on pense a ajouter les classe  pour le style
       li.classList.add("singleToDo");
       btnContainer.classList.add("btnToDo");
       editButton.classList.add("editBtn");
@@ -77,7 +60,7 @@ fetch("https://jsonplaceholder.typicode.com/todos")
       return li;
     };
 
-    // on push une nouvelle todo dans le tableau, avec la value dans l'input
+    // Ajout d'une nouvelle ToDo
     const addTodo = async (title) => {
       const newTodo = {
         title,
@@ -103,29 +86,42 @@ fetch("https://jsonplaceholder.typicode.com/todos")
         });
       // je push la nouvelle todo sur le tableau local (pour l'afficher dans ce projet)
       todos.push(newTodo);
-      //   on pense a réinvoquer la fonction pour rafraichir l'affichage des todos
       displayTodo();
     };
 
-    // on creer la function pour delete une todo
-    const deleteTodo = (i) => {
-      // on lui donne l'index de départ, et le nombre que l'on veux enlever
-      todos.splice(i, 1);
-      displayTodo();
+    // Supprimer une ToDo
+    const deleteTodo = async (i) => {
+      const answer = confirm("Voulez-vous supprimer la To Do n°" + i + " ?");
+      if (answer === true) {
+        todos.splice(i, 1);
+        await fetch("https://jsonplaceholder.typicode.com/todos" + "/" + i, {
+          method: "DELETE",
+        })
+          .then((resp) => {
+            console.log(resp);
+            console.log(alert("ToDo n°" + i + " supprimée !"));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        displayTodo();
+      } else {
+        alert("On ne touche à R");
+      }
     };
 
-    // on creer la function pour edit une todo
+    // Editer une Todo
     const editTodo = (i, todo) => {
-      // on récupère le titlee de la todo
       const title = todo.title;
       //   on affiche un prompt avec la valeur à changer
       const newtitle = window.prompt("Une modification à éffectuer ?", title);
       //   on remplace la valeur title initiale par la nouvelle valeur
       todos[i].title = newtitle;
+      console.log(todos[i]);
       displayTodo();
     };
 
-    // on creer une fonction pour toggle une todo (fait / pas fait)
+    // Toggle d'une ToDo
     const toggleTodo = (i) => {
       todos[i].completed = !todos[i].completed;
       displayTodo();
@@ -134,9 +130,7 @@ fetch("https://jsonplaceholder.typicode.com/todos")
     // fomulaire d'ajout d'une todo
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      // on récupere la valeur de l'input lors de la soumission
       const value = input.value;
-      // on reset sa valeur
       input.value = "";
       addTodo(value);
     });
