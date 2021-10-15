@@ -6,7 +6,10 @@ const input = document.querySelector(".input");
 
 fetch("https://jsonplaceholder.typicode.com/todos")
   .then(async (resp) => {
-    const todos = await resp.json();
+    const grabbedTodos = await resp.json();
+    // diviser le tableau en 10
+    const length = grabbedTodos.length;
+    const todos = grabbedTodos.slice(0, length / 10);
     // affichage des todos
     const displayTodo = () => {
       // on créer une node pour chaque todo
