@@ -112,14 +112,10 @@ fetch("https://jsonplaceholder.typicode.com/todos")
 
     // Editer une Todo
     const editTodo = async (i, todo) => {
-      console.log("before : ", todos[i]);
       const title = todo.title;
-      //   on affiche un prompt avec la valeur à changer
       const newtitle = window.prompt("Une modification à éffectuer ?", title);
-      //   on remplace la valeur title initiale par la nouvelle valeur
       todos[i].title = newtitle;
       todos[i].completed = false;
-      console.log("after : ", todos[i]);
       await fetch("https://jsonplaceholder.typicode.com/todos" + "/" + i, {
         method: "PUT",
         headers: {
@@ -128,8 +124,7 @@ fetch("https://jsonplaceholder.typicode.com/todos")
         body: JSON.stringify(todos[i]),
       })
         .then((resp) => {
-          console.log("response :", resp);
-          console.log(
+          alert(
             resp.ok === true
               ? "Modification éffectuée !"
               : "Erreur lors de l'envoi"
@@ -143,8 +138,19 @@ fetch("https://jsonplaceholder.typicode.com/todos")
     };
 
     // Toggle d'une ToDo
-    const toggleTodo = (i) => {
+    const toggleTodo = async (i) => {
       todos[i].completed = !todos[i].completed;
+      await fetch("https://jsonplaceholder.typicode.com/todos" + "/" + i, {
+        method: "PATCH",
+        body: JSON.stringify({
+          completed: todos[i].completed,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).catch((err) => {
+        console.log(err);
+      });
       displayTodo();
     };
 
